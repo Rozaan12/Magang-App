@@ -113,6 +113,26 @@ class PendaftaranController extends Controller
 
         Pendaftaran::insert($data);
 
+        // Notifikasi Telegram
+        try {
+            $user = Auth::user();
+            $detail = DetailUsers::where('id_users', $id_users)->first();
+            $nama_pelamar = $detail ? $detail->nama_lengkap : $user->name;
+            
+            $telegram = new \App\Services\TelegramService();
+            $pesan = "🔔 *NOTIFIKASI PENDAFTARAN BARU* 🔔\n\n"
+                   . "Ada pelamar baru yang mendaftar magang!\n\n"
+                   . "👤 *Nama Pelamar:* {$nama_pelamar}\n"
+                   . "💼 *Posisi:* {$lowongan->nama_lowongan}\n"
+                   . "🏫 *Universitas:* " . ($detail->universitas ?? '-') . "\n"
+                   . "📅 *Tanggal Daftar:* " . now()->format('d M Y H:i') . " WIB\n\n"
+                   . "Silakan tinjau pendaftaran melalui Dashboard Admin.";
+            
+            $telegram->sendMessage($pesan);
+        } catch (\Exception $e) {
+            \Log::error('Gagal kirim notifikasi Telegram: ' . $e->getMessage());
+        }
+
         return redirect('data-lamaran')->with('suc_message', 'Lamaran berhasil dikirim! Silakan pantau status seleksi secara berkala.');
     }
 

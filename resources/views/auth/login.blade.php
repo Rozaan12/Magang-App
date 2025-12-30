@@ -89,9 +89,16 @@
                                         <div class="d-block">
                                             <label for="password" class="control-label">Password</label>
                                         </div>
-                                        <input id="password" type="password" class="form-control" name="password" tabindex="2" autocomplete="current-password" required>
-                                        <div class="invalid-feedback">
-                                            please fill in your password
+                                        <div class="input-group">
+                                            <input id="password" type="password" class="form-control" name="password" tabindex="2" autocomplete="current-password" required>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                    <i class="fa fa-eye" id="eyeIcon"></i>
+                                                </button>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                please fill in your password
+                                            </div>
                                         </div>
                                     </div>
 
@@ -135,6 +142,23 @@
     <!-- Template JS File -->
     <script src="{{ asset('') }}assets_admin/js/scripts.js"></script>
     <script src="{{ asset('') }}assets_admin/js/custom.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#togglePassword").click(function() {
+                const passwordField = $("#password");
+                const eyeIcon = $("#eyeIcon");
+                
+                if (passwordField.attr("type") === "password") {
+                    passwordField.attr("type", "text");
+                    eyeIcon.removeClass("fa-eye").addClass("fa-eye-slash");
+                } else {
+                    passwordField.attr("type", "password");
+                    eyeIcon.removeClass("fa-eye-slash").addClass("fa-eye");
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

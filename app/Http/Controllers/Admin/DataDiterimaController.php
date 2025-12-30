@@ -41,7 +41,7 @@ class DataDiterimaController extends Controller
                                 ->join('users', 'pendaftaran.id_users', '=', 'users.id')
                                 ->leftjoin('detail_users', 'detail_users.id_users', '=', 'users.id')
                                 ->where('id_pendaftaran', $id_pendaftaran)
-                                ->select('pendaftaran.*', 'users.email', 'detail_users.*', 'lowongan.nama_lowongan')
+                                ->select('pendaftaran.*', 'users.email', 'users.no_telp', 'detail_users.*', 'lowongan.nama_lowongan')
                                 ->first(),
         ];
 

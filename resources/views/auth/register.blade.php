@@ -177,7 +177,14 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="password">Password</label>
-                            <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" autocomplete="new-password" required>
+                            <div class="input-group">
+                                <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" autocomplete="new-password" required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i class="fa fa-eye" id="eyeIcon"></i>
+                                    </button>
+                                </div>
+                            </div>
                             <div id="pwindicator" class="pwindicator">
                                 <div class="bar"></div>
                                 <div class="label"></div>
@@ -249,6 +256,23 @@
   <!-- assets_admin JS File -->
   <script src="{{asset('')}}assets_admin/js/scripts.js"></script>
   <script src="{{asset('')}}assets_admin/js/custom.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        $("#togglePassword").click(function() {
+            const passwordField = $("#password");
+            const eyeIcon = $("#eyeIcon");
+            
+            if (passwordField.attr("type") === "password") {
+                passwordField.attr("type", "text");
+                eyeIcon.removeClass("fa-eye").addClass("fa-eye-slash");
+            } else {
+                passwordField.attr("type", "password");
+                eyeIcon.removeClass("fa-eye-slash").addClass("fa-eye");
+            }
+        });
+    });
+  </script>
 
   <!-- Custom File Input Label Fix -->
   <script>
