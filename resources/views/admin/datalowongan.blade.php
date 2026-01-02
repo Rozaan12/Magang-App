@@ -126,11 +126,27 @@
                     </div>
                     <hr>
                     <hr>
+                    <hr>
                     <div class="section-title mt-0 text-primary">Detail Pertanyaan & Tugas Magang</div>
-                    <div class="form-group">
-                        <label>Upload File Pertanyaan & Tugas (PDF)</label>
-                        <input type="file" name="file_tugas" class="form-control" accept="application/pdf">
-                        <small class="text-muted">Upload file PDF yang berisi daftar pertanyaan wawancara dan instruksi tugas project.</small>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Pertanyaan Wawancara (Text)</label>
+                            <textarea name="pertanyaan_wawancara" class="form-control" rows="3" placeholder="Tuliskan poin pertanyaan..."></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Tugas Project (Text)</label>
+                            <textarea name="tugas_project" class="form-control" rows="3" placeholder="Tuliskan instruksi tugas..."></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Upload File Pertanyaan Interview (PDF)</label>
+                            <input type="file" name="file_interview" class="form-control" accept="application/pdf">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Upload File Tugas Project (PDF)</label>
+                            <input type="file" name="file_tugas" class="form-control" accept="application/pdf">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Gambar Ilustrasi Lowongan</label>
@@ -193,17 +209,41 @@
                         <input type="text" name="tahapan_seleksi" class="form-control" value="{{ $value->tahapan_seleksi }}">
                     </div>
                     <hr>
+                    <hr>
                     <div class="section-title mt-0 text-primary">Detail Pertanyaan & Tugas Magang</div>
-                    <div class="form-group">
-                        <label>File Pertanyaan & Tugas Baru (PDF)</label>
-                        <input type="file" name="file_tugas" class="form-control" accept="application/pdf">
-                        @if($value->file_tugas)
-                            <div class="mt-2">
-                                <a href="{{ asset('uploads/file_tugas/' . $value->file_tugas) }}" target="_blank" class="btn btn-sm btn-info">
-                                    <i class="fas fa-file-pdf"></i> Lihat File Saat Ini
-                                </a>
-                            </div>
-                        @endif
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Pertanyaan Wawancara (Text)</label>
+                            <textarea name="pertanyaan_wawancara" class="form-control" rows="3">{{ $value->pertanyaan_wawancara }}</textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Tugas Project (Text)</label>
+                            <textarea name="tugas_project" class="form-control" rows="3">{{ $value->tugas_project }}</textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>File Pertanyaan Interview (PDF)</label>
+                            <input type="file" name="file_interview" class="form-control" accept="application/pdf">
+                            @if($value->file_interview)
+                                <div class="mt-2">
+                                    <a href="{{ asset('uploads/file_interview/' . $value->file_interview) }}" target="_blank" class="btn btn-sm btn-info">
+                                        <i class="fas fa-file-pdf"></i> Lihat File Interview
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>File Tugas Project (PDF)</label>
+                            <input type="file" name="file_tugas" class="form-control" accept="application/pdf">
+                            @if($value->file_tugas)
+                                <div class="mt-2">
+                                    <a href="{{ asset('uploads/file_tugas/' . $value->file_tugas) }}" target="_blank" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-file-pdf"></i> Lihat File Tugas
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Gambar Baru (Kosongkan jika tidak ganti)</label>

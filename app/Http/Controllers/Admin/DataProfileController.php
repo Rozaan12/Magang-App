@@ -81,7 +81,6 @@ class DataProfileController extends Controller
     
             Profile::where('id_perusahaan', $id_perusahaan)->update($data);
         }
-        
 
         return redirect()->back()->with('suc_message', 'Data Berhasil diupdate!');
     }

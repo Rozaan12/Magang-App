@@ -50,6 +50,13 @@ class DataLowonganController extends Controller
             $file->move('uploads/file_tugas', $nama_file_tugas);
         }
 
+        $nama_file_interview = null;
+        if ($request->hasFile('file_interview')) {
+            $file = $request->file('file_interview');
+            $nama_file_interview = "Interview_".time()."_".$file->getClientOriginalName();
+            $file->move('uploads/file_interview', $nama_file_interview);
+        }
+
         $data = [
             'nama_lowongan' => $request->nama_lowongan,
             'deskripsi' => $request->deskripsi,
@@ -61,6 +68,7 @@ class DataLowonganController extends Controller
             'tugas_project' => $request->tugas_project,
             'minimal_durasi' => $request->minimal_durasi,
             'file_tugas' => $nama_file_tugas,
+            'file_interview' => $nama_file_interview,
             'gambar' => $nama_document_gambar,
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(),
@@ -110,6 +118,14 @@ class DataLowonganController extends Controller
             $nama_file_tugas = "Task_".time()."_".$file->getClientOriginalName();
             $file->move('uploads/file_tugas', $nama_file_tugas);
             $data['file_tugas'] = $nama_file_tugas;
+        }
+
+        if ($request->hasFile('file_interview')) {
+            $request->validate(['file_interview' => 'file|mimes:pdf|max:5120']);
+            $file = $request->file('file_interview');
+            $nama_file_interview = "Interview_".time()."_".$file->getClientOriginalName();
+            $file->move('uploads/file_interview', $nama_file_interview);
+            $data['file_interview'] = $nama_file_interview;
         }
 
         $lowongan->update($data);

@@ -29,88 +29,136 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        <h6>Profile</h6>
-                        <img src="<?= asset('')?>gambar/<?= $data['detail_pendaftaran']->gambar?>" alt="" width ="100%">
-                        <br>
-                        <br>
-                        <h6>Detail Berkas</h6>
-                        <a href="{{ url('berkas/'.$data['detail_pendaftaran']->ktp)}}" download class="btn btn-primary">Download KTP</a>
-                        <a href="{{ url('berkas/'.$data['detail_pendaftaran']->cv)}}" download class="btn btn-warning">Download CV</a>
-                        <a href="{{ url('berkas/'.$data['detail_pendaftaran']->surat_rekomendasi)}}" download class="btn btn-info">Download Surat Rekomendasi</a>
-                        <a href="{{ url('berkas/'.$data['detail_pendaftaran']->proposal)}}" download class="btn btn-info mt-1">Download Proposal</a>
-                        <div class="form-group">
-                            <label>Universitas</label>
-                            <input type="text" name = "agama" class="form-control" required value = "{{$data['detail_pendaftaran']->universitas}}" readonly>
+                    <!-- SISI KIRI: PROFIL & BERKAS -->
+                    <div class="col-md-4">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body text-center">
+                                <h6 class="text-muted mb-3">Foto Profil</h6>
+                                <div class="mb-4">
+                                    <img src="<?= asset('')?>gambar/<?= $data['detail_pendaftaran']->gambar?>" alt="Profile" class="img-fluid rounded shadow-sm" style="max-height: 250px; width: 100%; object-fit: cover;">
+                                </div>
+                                <hr>
+                                <h6 class="text-muted mb-3">Berkas Pendaftaran</h6>
+                                <div class="d-flex flex-column gap-2">
+                                    <a href="{{ url('berkas/'.$data['detail_pendaftaran']->ktp)}}" download class="btn btn-primary btn-sm btn-block mb-2"><i class="fas fa-id-card"></i> Download KTP</a>
+                                    <a href="{{ url('berkas/'.$data['detail_pendaftaran']->cv)}}" download class="btn btn-warning btn-sm btn-block mb-2"><i class="fas fa-file-pdf"></i> Download CV</a>
+                                    <a href="{{ url('berkas/'.$data['detail_pendaftaran']->surat_rekomendasi)}}" download class="btn btn-info btn-sm btn-block mb-2"><i class="fas fa-file-invoice"></i> Surat Rekomendasi</a>
+                                    <a href="{{ url('berkas/'.$data['detail_pendaftaran']->proposal)}}" download class="btn btn-dark btn-sm btn-block"><i class="fas fa-file-alt"></i> Download Proposal</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Jurusan</label>
-                            <input type="text" name = "agama" class="form-control" required value = "{{$data['detail_pendaftaran']->jurusan}}" readonly>
-                        </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Prodi</label>
-                            <input type="text" name = "agama" class="form-control" required value = "{{$data['detail_pendaftaran']->prodi}}" readonly>
+                    <!-- SISI KANAN: DATA LENGKAP -->
+                    <div class="col-md-8">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <h5 class="text-primary mb-4 pb-2 border-bottom"><i class="fas fa-user"></i> Informasi Pelamar</h5>
+                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Nama Lengkap</label>
+                                            <input type="text" class="form-control" value="{{$data['detail_pendaftaran']->nama_lengkap}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Email</label>
+                                            <input type="text" class="form-control" value="{{$data['detail_pendaftaran']->email}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">No. Telepon/WhatsApp</label>
+                                            <input type="text" class="form-control" value="{{$data['detail_pendaftaran']->no_telp}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Tempat Lahir</label>
+                                            <input type="text" class="form-control" value="{{$data['detail_pendaftaran']->tempat_lahir}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Tanggal Lahir</label>
+                                            <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($data['detail_pendaftaran']->tanggal_lahir)->format('d F Y') }}" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <h5 class="text-primary mt-3 mb-4 pb-2 border-bottom"><i class="fas fa-graduation-cap"></i> Data Akademik</h5>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Sekolah / Universitas</label>
+                                            <input type="text" class="form-control" value="{{$data['detail_pendaftaran']->sekolah}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Jurusan</label>
+                                            <input type="text" class="form-control" value="{{$data['detail_pendaftaran']->jurusan}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Program Studi</label>
+                                            <input type="text" class="form-control" value="{{$data['detail_pendaftaran']->program_studi}}" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Alamat Lengkap</label>
+                                            <textarea class="form-control" rows="2" readonly style="resize: none;">{{$data['detail_pendaftaran']->alamat_lengkap}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group mt-3">
-                            <label for="frist_name">Nama Lengkap</label>
-                            <input id="frist_name" type="text" class="form-control" name="nama_lengkap" autofocus required value = "{{$data['detail_pendaftaran']->nama_lengkap}}" readonly>
-                        </div>
-                        <div class="row">
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="text-primary"><i class="fas fa-link"></i> Jawaban Tugas & Wawancara</h5>
+                        <div class="row mt-3">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Email</label>
-                                    <input type="email" name = "email" class="form-control" value = "{{$data['detail_pendaftaran']->email}}" required readonly>
-                                </div>   
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6>Link Video Wawancara</h6>
+                                        @if($data['detail_pendaftaran']->jawaban_wawancara)
+                                            <a href="{{ $data['detail_pendaftaran']->jawaban_wawancara }}" target="_blank" class="btn btn-outline-primary btn-block">
+                                                <i class="fas fa-video"></i> Buka Link Video
+                                            </a>
+                                            <small class="text-muted">{{ $data['detail_pendaftaran']->jawaban_wawancara }}</small>
+                                        @else
+                                            <p class="text-muted">Belum disubmit oleh peserta.</p>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">No Telepon</label>
-                                    <input type="number" name = "no_telp" value = "{{$data['detail_pendaftaran']->no_telp}}" class="form-control" required readonly>
-                                </div> 
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6>Link Project Based Test</h6>
+                                        @if($data['detail_pendaftaran']->link_project)
+                                            <a href="{{ $data['detail_pendaftaran']->link_project }}" target="_blank" class="btn btn-outline-info btn-block">
+                                                <i class="fas fa-folder-open"></i> Buka Link Project
+                                            </a>
+                                            <small class="text-muted">{{ $data['detail_pendaftaran']->link_project }}</small>
+                                        @else
+                                            <p class="text-muted">Belum disubmit oleh peserta.</p>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                      
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label>NIM</label>
-                                <input type="text" name = "nim" class="form-control" required value = "{{$data['detail_pendaftaran']->nim}}" readonly>
-                            </div>
-                            <div class="form-group col-6">
-                                <label>NIK</label>
-                                <input type="text" name = "nik" class="form-control" required value = "{{$data['detail_pendaftaran']->nik}}" readonly>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label>Tempat Lahir</label>
-                                <input type="text" name = "tempat_lahir" class="form-control" required value = "{{$data['detail_pendaftaran']->tempat_lahir}}" readonly>
-                            </div>
-                            <div class="form-group col-6">
-                                <label>Tanggal Lahir</label>
-                                <input type="date" name = "tanggal_lahir" class="form-control" required value = "{{$data['detail_pendaftaran']->tanggal_lahir}}" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Jenis Kelamin</label>
-                            <input type="text" name = "jenis_kelamin" class="form-control" required value = "{{$data['detail_pendaftaran']->jenis_kelamin}}" readonly>
-                        </div>
-    
-          
-                        <div class="form-group">
-                            <label>Agama</label>
-                            <input type="text" name = "agama" class="form-control" required value = "{{$data['detail_pendaftaran']->agama}}" readonly>
-                        </div>
-                    
-                        <div class="form-group">
-                          <label>Alamat Lengkap</label>
-                            <textarea name="alamat_lengkap" id="" required value = "{{$data['detail_pendaftaran']->alamat_lengkap}}" readonly class="form-control" cols="30" rows="10">{{$data['detail_pendaftaran']->alamat_lengkap}}</textarea>
                         </div>
                     </div>
-                  
                 </div>
             </div>
         </div>

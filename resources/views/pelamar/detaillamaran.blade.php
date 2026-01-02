@@ -83,21 +83,39 @@
                                         <div class="mt-4">
                                             <h6 class="font-weight-bold mb-3 mt-3 shadow-sm text-primary">Instruksi Pengerjaan & Wawancara:</h6>
                                             
-                                            @if($data['detail_pendaftaran']->file_tugas)
-                                                <div class="alert alert-warning border-0 shadow-sm" style="border-radius: 12px;">
+                                            @if($data['detail_pendaftaran']->file_interview)
+                                                <div class="alert alert-info border-0 shadow-sm" style="border-radius: 12px;">
                                                     <div class="row align-items-center">
                                                         <div class="col-md-8">
-                                                            <p class="mb-0 font-weight-bold"><i class="fas fa-file-pdf mr-2"></i> File Pertanyaan & Tugas</p>
-                                                            <small class="text-muted">Silakan download file ini untuk melihat daftar pertanyaan wawancara dan instruksi project.</small>
+                                                            <p class="mb-0 font-weight-bold"><i class="fas fa-file-pdf mr-2"></i> File Pertanyaan Interview</p>
+                                                            <small class="text-muted">Silakan download file ini untuk melihat daftar pertanyaan wawancara.</small>
+                                                        </div>
+                                                        <div class="col-md-4 text-md-right mt-3 mt-md-0">
+                                                            <a href="{{ asset('uploads/file_interview/' . $data['detail_pendaftaran']->file_interview) }}" class="btn btn-info btn-sm px-3 shadow-sm" target="_blank">
+                                                                 <i class="fas fa-download mr-1"></i> Download PDF
+                                                             </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+
+                                            @if($data['detail_pendaftaran']->file_tugas)
+                                                <div class="alert alert-warning border-0 shadow-sm mt-3" style="border-radius: 12px;">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-8">
+                                                            <p class="mb-0 font-weight-bold text-dark"><i class="fas fa-tasks mr-2"></i> File Instruksi Tugas Project</p>
+                                                            <small class="text-muted">Silakan download file ini untuk melihat rincian tugas project.</small>
                                                         </div>
                                                         <div class="col-md-4 text-md-right mt-3 mt-md-0">
                                                             <a href="{{ asset('uploads/file_tugas/' . $data['detail_pendaftaran']->file_tugas) }}" class="btn btn-primary btn-sm px-3 shadow-sm" target="_blank">
                                                                  <i class="fas fa-download mr-1"></i> Download PDF
-                                                            </a>
+                                                             </a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @else
+                                            @endif
+
+                                            @if(!$data['detail_pendaftaran']->file_interview && !$data['detail_pendaftaran']->file_tugas)
                                                 <div class="bg-white p-4 rounded border shadow-sm">
                                                     @if($data['detail_pendaftaran']->pertanyaan_wawancara)
                                                         <div class="mb-4">

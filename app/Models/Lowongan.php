@@ -23,6 +23,7 @@ class Lowongan extends Model
         'tugas_project',
         'minimal_durasi',
         'file_tugas',
+        'file_interview',
         'created_by'
     ];
 }

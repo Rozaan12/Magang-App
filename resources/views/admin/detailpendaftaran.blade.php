@@ -125,12 +125,19 @@
 
                         <div class="text-right mt-4">
                             <button type="button" class="btn btn-secondary mr-2" onclick="window.history.back()">Kembali</button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#TidakDiterima">
-                                Tolak Lamaran
-                            </button>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Diterima">
-                                Terima & Lanjut Wawancara
-                            </button>
+                            
+                            @if(!in_array($data['detail_pendaftaran']->status_pendaftaran, ['tidak diterima', 'diterima']))
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#TidakDiterima">
+                                    Tolak Lamaran
+                                </button>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Diterima">
+                                    Terima & Lanjut Wawancara
+                                </button>
+                            @else
+                                <span class="badge {{ $data['detail_pendaftaran']->status_pendaftaran == 'diterima' ? 'badge-success' : 'badge-danger' }} p-2">
+                                    Status: {{ ucfirst($data['detail_pendaftaran']->status_pendaftaran) }}
+                                </span>
+                            @endif
                         </div>
                     </div>
                 </div>
