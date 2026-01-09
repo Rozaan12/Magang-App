@@ -133,8 +133,8 @@ class LoginController extends Controller
             'email' => 'required|email|unique:users,email',
             'no_telp' => 'required',
             'password' => 'required|min:6',
-            'cv' => 'required|mimes:pdf|max:2048', // Max 2MB
-            'portofolio_file' => 'nullable|mimes:pdf|max:5120', // Max 5MB
+            'cv' => 'required|mimes:pdf|max:10240', // Max 10MB
+            'portofolio_file' => 'nullable|mimes:pdf|max:10240', // Max 10MB
             'username_telegram' => 'required',
         ]);
 
@@ -278,7 +278,7 @@ class LoginController extends Controller
 
             // Cek Upload File CV Baru
             if ($request->hasFile('cv')) {
-                $request->validate(['cv' => 'mimes:pdf|max:2048']);
+                $request->validate(['cv' => 'mimes:pdf|max:10240']);
                 $file = $request->file('cv');
                 $cvName = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('berkas'), $cvName);
@@ -291,7 +291,7 @@ class LoginController extends Controller
 
             // Cek Upload File Portofolio Baru
             if ($request->hasFile('portofolio_file')) {
-                 $request->validate(['portofolio_file' => 'mimes:pdf|max:5120']);
+                 $request->validate(['portofolio_file' => 'mimes:pdf|max:10240']);
                 $file = $request->file('portofolio_file');
                 $portoName = time() . '_porto_' . $file->getClientOriginalName();
                 $file->move(public_path('berkas'), $portoName);

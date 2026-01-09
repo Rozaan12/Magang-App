@@ -32,7 +32,8 @@ class DataLowonganController extends Controller
             'kuota' => 'required|numeric',
             'minimal_durasi' => 'required|numeric|min:1',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'file_tugas' => 'nullable|file|mimes:pdf|max:5120',
+            'file_tugas' => 'nullable|file|mimes:pdf|max:10240',
+            'file_interview' => 'nullable|file|mimes:pdf|max:10240',
         ]);
 
         $nama_document_gambar = null;
@@ -113,7 +114,7 @@ class DataLowonganController extends Controller
         }
 
         if ($request->hasFile('file_tugas')) {
-            $request->validate(['file_tugas' => 'file|mimes:pdf|max:5120']);
+            $request->validate(['file_tugas' => 'file|mimes:pdf|max:10240']);
             $file = $request->file('file_tugas');
             $nama_file_tugas = "Task_".time()."_".$file->getClientOriginalName();
             $file->move('uploads/file_tugas', $nama_file_tugas);
@@ -121,7 +122,7 @@ class DataLowonganController extends Controller
         }
 
         if ($request->hasFile('file_interview')) {
-            $request->validate(['file_interview' => 'file|mimes:pdf|max:5120']);
+            $request->validate(['file_interview' => 'file|mimes:pdf|max:10240']);
             $file = $request->file('file_interview');
             $nama_file_interview = "Interview_".time()."_".$file->getClientOriginalName();
             $file->move('uploads/file_interview', $nama_file_interview);

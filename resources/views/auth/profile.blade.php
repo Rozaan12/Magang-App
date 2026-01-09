@@ -116,7 +116,7 @@
                                     <div class="text-danger small">Belum upload CV</div>
                                 @endif
                                 <div class="mt-2">
-                                    <label class="small text-muted">Update CV (Biarkan kosong jika tidak ingin mengubah)</label>
+                                    <label class="small text-muted">Update CV (PDF, Maksimal 10MB. Biarkan kosong jika tidak ingin mengubah)</label>
                                     <input type="file" name="cv" class="form-control-file" accept=".pdf">
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                 @endif
                                 
                                 <div class="mt-2">
-                                    <label class="small text-muted">Update File Portofolio (Opsional)</label>
+                                    <label class="small text-muted">Update File Portofolio (PDF, Maksimal 10MB. Opsional)</label>
                                     <input type="file" name="portofolio_file" class="form-control-file" accept=".pdf">
                                 </div>
                                 <div class="mt-2">

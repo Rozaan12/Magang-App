@@ -58,7 +58,7 @@ class PendaftaranController extends Controller
             'id_lowongan' => 'required|exists:lowongan,id',
             'dari_tanggal' => 'required|date|after_or_equal:today',
             'sampai_tanggal' => 'required|date|after:dari_tanggal',
-            'surat_rekomendasi' => 'required|file|mimes:pdf|max:5120', // Max 5MB
+            'surat_rekomendasi' => 'required|file|mimes:pdf|max:10240', // Max 10MB
         ]);
 
         $lowongan = \App\Models\Lowongan::findOrFail($request->id_lowongan);

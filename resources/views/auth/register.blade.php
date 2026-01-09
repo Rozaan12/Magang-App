@@ -147,7 +147,7 @@
                             <input type="file" class="custom-file-input" id="cv" name="cv" accept=".pdf" required>
                             <label class="custom-file-label" for="cv">Pilih file PDF...</label>
                         </div>
-                        <small class="form-text text-muted">Format PDF, Maksimal 2MB.</small>
+                        <small class="form-text text-muted">Format PDF, Maksimal 10MB.</small>
                     </div>
 
                     <div class="form-group">

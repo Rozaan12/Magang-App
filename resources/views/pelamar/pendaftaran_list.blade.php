@@ -179,7 +179,7 @@
                                             <input type="file" name="surat_rekomendasi" class="custom-file-input" id="fileRekom{{ $l->id }}" required accept="application/pdf">
                                             <label class="custom-file-label" for="fileRekom{{ $l->id }}">Pilih file PDF...</label>
                                         </div>
-                                        <small class="text-muted">Wajib upload surat rekomendasi dari kampus/sekolah.</small>
+                                        <small class="text-muted">Wajib upload surat rekomendasi dari kampus/sekolah (PDF, Maksimal 10MB).</small>
                                     </div>
 
                                     <div id="durationWarning{{ $l->id }}" class="alert alert-danger mt-3 d-none" style="border-radius: 10px; font-size: 13px;">

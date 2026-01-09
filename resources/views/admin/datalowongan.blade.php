@@ -140,11 +140,11 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label>Upload File Pertanyaan Interview (PDF)</label>
+                            <label>Upload File Pertanyaan Interview (PDF, Maksimal 10MB)</label>
                             <input type="file" name="file_interview" class="form-control" accept="application/pdf">
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Upload File Tugas Project (PDF)</label>
+                            <label>Upload File Tugas Project (PDF, Maksimal 10MB)</label>
                             <input type="file" name="file_tugas" class="form-control" accept="application/pdf">
                         </div>
                     </div>
@@ -223,7 +223,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label>File Pertanyaan Interview (PDF)</label>
+                            <label>File Pertanyaan Interview (PDF, Maksimal 10MB)</label>
                             <input type="file" name="file_interview" class="form-control" accept="application/pdf">
                             @if($value->file_interview)
                                 <div class="mt-2">
@@ -234,7 +234,7 @@
                             @endif
                         </div>
                         <div class="form-group col-md-6">
-                            <label>File Tugas Project (PDF)</label>
+                            <label>File Tugas Project (PDF, Maksimal 10MB)</label>
                             <input type="file" name="file_tugas" class="form-control" accept="application/pdf">
                             @if($value->file_tugas)
                                 <div class="mt-2">

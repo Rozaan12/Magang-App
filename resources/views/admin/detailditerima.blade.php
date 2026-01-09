@@ -33,14 +33,8 @@
                     <div class="col-md-4">
                         <div class="card shadow-sm border-0">
                             <div class="card-body text-center">
-                                <h6 class="text-muted mb-3">Foto Profil</h6>
-                                <div class="mb-4">
-                                    <img src="<?= asset('')?>gambar/<?= $data['detail_pendaftaran']->gambar?>" alt="Profile" class="img-fluid rounded shadow-sm" style="max-height: 250px; width: 100%; object-fit: cover;">
-                                </div>
-                                <hr>
                                 <h6 class="text-muted mb-3">Berkas Pendaftaran</h6>
                                 <div class="d-flex flex-column gap-2">
-                                    <a href="{{ url('berkas/'.$data['detail_pendaftaran']->ktp)}}" download class="btn btn-primary btn-sm btn-block mb-2"><i class="fas fa-id-card"></i> Download KTP</a>
                                     <a href="{{ url('berkas/'.$data['detail_pendaftaran']->cv)}}" download class="btn btn-warning btn-sm btn-block mb-2"><i class="fas fa-file-pdf"></i> Download CV</a>
                                     <a href="{{ url('berkas/'.$data['detail_pendaftaran']->surat_rekomendasi)}}" download class="btn btn-info btn-sm btn-block mb-2"><i class="fas fa-file-invoice"></i> Surat Rekomendasi</a>
                                     <a href="{{ url('berkas/'.$data['detail_pendaftaran']->proposal)}}" download class="btn btn-dark btn-sm btn-block"><i class="fas fa-file-alt"></i> Download Proposal</a>
